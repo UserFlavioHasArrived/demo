@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout}">
+    <body th:fragment="content">
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title"><i class="fa-solid fa-wheelchair"></i> Cadastro de Deficiência</h5>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/deficiencias/salvar}" th:object="${deficiencia}" method="post">
+                    <div class="form-group">
+                        <label for="nome">Nome da Deficiência</label>
+                        <input type="text" class="form-control" id="nome" th:field="*{nome}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select class="form-control" id="categoria" th:field="*{categoria}" required>
+                            <option value="">Selecione a categoria</option>
+                            <option th:each="categoria : ${categorias}" th:value="${categoria}" th:text="${categoria}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

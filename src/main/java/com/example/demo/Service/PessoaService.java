@@ -53,8 +53,7 @@ public class PessoaService {
         endereco.setLogradouro(pessoaForm.getLogradouro());
 
         Cidade cidade = this.cidadeRepository.findCidadeByNome(pessoaForm.getCidade());
-        Bairro bairro = this.bairroRepository
-        .findBairroByNomeAndCidade(pessoaForm.getBairro(), cidade.getId());
+        Bairro bairro = this.bairroRepository.findBairroByNomeAndCidade(pessoaForm.getBairro(), cidade.getId());
 
         endereco.setBairro(bairro);
         endereco.setNumero(pessoaForm.getNumero());
